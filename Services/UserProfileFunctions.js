@@ -1,6 +1,11 @@
 
 const mongoose=require("mongoose") 
 const cloudinary=require("cloudinary").v2
+cloudinary.config({ 
+    cloud_name: 'di91necvb',
+    api_key: '661133491932653',
+    api_secret: '0aeiIaRqJdfxZn-suqcprDQc89M' 
+})
 require('dotenv').config()
 const User=require("../Models/User") 
 
@@ -44,7 +49,7 @@ const getLogin=(req,res)=>{
 const uploadProfilePhoto=(req,res)=>{
     cloudinary.uploader.upload(req.body.photoPath,{
         resource_type:"image",
-        "public_id":'Finalproject/profilepic/'+req.body._id+''
+        "public_id":'Finalproject/ProfilePic/'+req.body._id+''
     }).then((result)=>{
         User.findOneAndUpdate({_id:req.body._id},{profile_pic:result.url},function(err,data){
             if(err){

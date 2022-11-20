@@ -8,6 +8,6 @@ const Service=new mongoose.Schema({
     location:{type:String},
     serviceImage: {type:String},
     tags:{type:String}
-})
+},{ timestamps: true })
 
 module.exports=mongoose.model("Service",Service)

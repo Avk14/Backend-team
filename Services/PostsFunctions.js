@@ -5,6 +5,11 @@ const Post=require("../Models/Post")
 
 
 const cloudinary=require("cloudinary").v2
+cloudinary.config({ 
+    cloud_name: 'di91necvb',
+    api_key: '661133491932653',
+    api_secret: '0aeiIaRqJdfxZn-suqcprDQc89M' 
+})
 require('dotenv').config()
 const url =process.env.Mongo_url
 
@@ -37,7 +42,7 @@ const create_post=async (req,res)=>{
     if(req.body.photo_link){
     new_post.photo_link=await cloudinary.uploader.upload(req.body.photo_link,{
         resource_type:"image",
-        "public_id":'Finalproject/Post/'+req.body._id+'-'+req.body.title
+        "public_id":'Finalproject/Post/'+new_post._id+'-'+req.body.title
     }).then((result)=>{
         return result.url
     }).catch((err)=>{
