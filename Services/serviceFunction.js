@@ -14,7 +14,7 @@ const addService = async(req,res)=>{
     if(req.body.serviceImage){
         serviceDetails.serviceImage=await cloudinary.uploader.upload(req.body.serviceImage,{
             resource_type:"image",
-            "public_id":'Finalproject/Service/'+serviceDetails._id+'-'+req.body.serviceTitle
+            "public_id":'WorkIT/Service/'+serviceDetails._id+'-'+req.body.serviceTitle
         }).then((result)=>{
             return result.url
         }).catch((err)=>{

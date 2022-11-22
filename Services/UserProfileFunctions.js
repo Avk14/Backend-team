@@ -24,7 +24,7 @@ const getLogin=(req,res)=>{
 const uploadProfilePhoto=(req,res)=>{
     cloudinary.uploader.upload(req.body.photoPath,{
         resource_type:"image",
-        "public_id":'Finalproject/ProfilePic/'+req.body._id+''
+        "public_id":'WorkIT/ProfilePic/'+req.body._id+''
     }).then((result)=>{
         User.findOneAndUpdate({_id:req.body._id},{profile_pic:result.url},function(err,data){
             if(err){
@@ -75,7 +75,7 @@ const updateUserProfile=(req,res)=>{
 
 const getUData=(req,res)=>{
     console.log(typeof(req.body)) 
-    User.findOne({username: req.body.username},function(err,data){
+    User.findOne({_id: req.body._id},function(err,data){
         if(err){
             console.log("error"+err) 
         }
