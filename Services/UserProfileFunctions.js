@@ -13,7 +13,7 @@ const getLogin=(req,res)=>{
                 res.send("Incorrect credentials")
             }
             else{
-                res.send("Successful")
+                res.send(data._id)
             }
         }
     }) 
