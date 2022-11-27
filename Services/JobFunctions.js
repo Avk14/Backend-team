@@ -46,7 +46,7 @@ const delete_Job=(req,res)=>{
 }
 
 const get_Job=(req,res)=>{
-    Job.find({UserID:req.body.UserID},(err,data)=>{
+    Job.find({},(err,data)=>{
         if(err)
         {
             res.send(err)
@@ -57,6 +57,7 @@ const get_Job=(req,res)=>{
         }
     })
 }
+
 
 
 module.exports={create_Job,delete_Job,get_Job}

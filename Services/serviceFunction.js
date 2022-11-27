@@ -1,6 +1,7 @@
 
 const serviceModel = require('../Models/Service')
 const cloudinary=require('../config')
+const Service = require('../Models/Service')
 const addService = async(req,res)=>{
     var serviceDetails = new serviceModel({
                             userID: req.body.userID,
@@ -34,7 +35,18 @@ const addService = async(req,res)=>{
 }
 
 
+const get_Service=(req,res)=>{
+    Service.find({},(err,data)=>{
+        if(err)
+        {
+            res.send(err)
+        }
+        else
+        {
+            res.send(data)
+        }
+    })
+}
 
 
-
-module.exports = {addService,}
+module.exports = {addService,get_Service}
