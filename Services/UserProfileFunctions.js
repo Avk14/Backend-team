@@ -66,6 +66,7 @@ const updateUserProfile=(req,res)=>{
     User.findOneAndUpdate({_id:req.body._id},req.body,function(err,data){
         if(err){
             console.log("error"+err) 
+            res.send(err)
         }
         else{
             res.send(req.body) 
@@ -75,23 +76,49 @@ const updateUserProfile=(req,res)=>{
 
 const getUData=(req,res)=>{
     console.log(typeof(req.body)) 
-    User.findOne({_id: req.body._id},function(err,data){
-        if(err){
-            console.log("error"+err) 
-        }
-        else{
-
-            if(data==null){
-                console.log("No user found!") 
+    if(req.body.email)
+    {
+        User.findOne({email:req.body.email},function(err,data){
+            if(err){
+                console.log("error"+err) 
+                res.send(err)
             }
             else{
-                console.log("Logged in") 
-                console.log(data) 
-                res.send(data) 
-                
+    
+                if(data==null){
+                    console.log("No user found!") 
+                }
+                else{
+                    console.log("Logged in") 
+                    console.log(data) 
+                    res.send(data) 
+                    
+                }
             }
-        }
-    }) 
+        })
+    }
+    else
+    {
+        User.findOne({_id: req.body._id},function(err,data){
+            if(err){
+                console.log("error"+err) 
+                res.send(err)
+            }
+            else{
+    
+                if(data==null){
+                    console.log("No user found!") 
+                }
+                else{
+                    console.log("Logged in") 
+                    console.log(data) 
+                    res.send(data) 
+                    
+                }
+            }
+        })
+    }
+     
 }
 
 const deleteUser=(req, res)=>{

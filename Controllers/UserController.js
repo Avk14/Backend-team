@@ -10,13 +10,13 @@ router.use(express.json())
 
 router.get('/login',UserProfContr.getLogin)
 
-router.get('/upload',UserProfContr.uploadProfilePhoto)
+router.post('/upload',UserProfContr.uploadProfilePhoto)
 
-router.get('/register', UserProfContr.registerUser)
+router.post('/register', UserProfContr.registerUser)
 
-router.patch('/updateprofile',UserProfContr.updateUserProfile)
+router.post('/updateprofile',UserProfContr.updateUserProfile)
 
-router.get('/find',UserProfContr.getUData)
+router.post('/find',UserProfContr.getUData)
 
 router.delete('/delete', UserProfContr.deleteUser)
 
